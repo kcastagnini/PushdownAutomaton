@@ -24,3 +24,5 @@ PushdownAutomaton pda = builder.Build(standing);
 
 pda.Tick(); //call repeatedly to evalute predicates and perform transitions 
 ```
+
+Note: Even though this library was originally designed for Unity projects it contains no dependencies with the Unity Engine and it can be used in any .NET projects.
