@@ -4,18 +4,18 @@ A lightweight and versatile implementation of a pushdown automaton in C#.
 ```c#
 var builder = new PushdownAutomatonBuilder();
 
-//add transitions from a source to a target state when the predicates are true 
+//add transitions from 'standing' state...
 builder.From(standing)
-    .To(jumping, isGrounded, jumpRequested)
-    .To(crouching, crouchRequested);
+    .To(jumping, isGrounded, jumpRequested) //...to 'jumping' when 'isGrounded' and 'jumpRequested' evaluate to true
+    .To(crouching, crouchRequested); //...to 'crouching' when 'crouchRequested' evaluates to true
 
-//add transitions from any source state to a target state when the predicates are true 
-builder.FromAny()
-    .To(firing, enemyInRange);
+//add transitions from any source state (except 'firing')...
+builder.FromAny(firing)
+    .To(firing, enemyInRange); //...to 'firing' when 'enemyInRange' evaluates to true
 
-//add transitions from a source state to the previous state we were in
+//add transitions from 'firing' state...
 builder.From(firing)
-    .ToPrevious(enemyKilled);
+    .ToPrevious(enemyKilled); //...to the previous state we were in when 'enemyKilled' evaluates to true
 
 //build an instance of a PDA with 'standing' as its initial state
 PushdownAutomaton pda = builder.Build(standing);
