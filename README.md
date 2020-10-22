@@ -10,7 +10,7 @@ builder.From(standing)
     .To(crouching, crouchRequested);
 
 //add transitions from any source state to a target state when the predicates are true 
-builder.FromAny(firing)
+builder.FromAny()
     .To(firing, enemyInRange);
 
 //add transitions from a source state to the previous state we were in
