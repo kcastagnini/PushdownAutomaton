@@ -2,7 +2,7 @@
 A lightweight and versatile implementation of a pushdown automaton in C#.
 
 ```c#
-var builder = new PushdownAutomatonBuilder();
+var builder = new AutomatonBuilder();
 
 //add transitions from a source state to a target state with one or more predicates
 builder.From(standing)
@@ -18,7 +18,7 @@ builder.From(firing)
     .ToPrevious(enemyKilled);
 
 //build an instance of a PDA with 'standing' as its initial state
-PushdownAutomaton pda = builder.Build(standing);
+Automaton pda = builder.Build(standing);
 
 //...
 
